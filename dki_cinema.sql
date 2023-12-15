@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost
--- Généré le : ven. 01 déc. 2023 à 10:38
+-- Hôte : 127.0.0.1:3306
+-- Généré le : ven. 15 déc. 2023 à 09:20
 -- Version du serveur : 5.7.36
--- Version de PHP : 8.1.0
+-- Version de PHP : 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `cinema`
+-- Base de données : `dki_cinema`
 --
 
 -- --------------------------------------------------------
@@ -27,18 +27,27 @@ SET time_zone = "+00:00";
 -- Structure de la table `client`
 --
 
-CREATE TABLE `client` (
-  `id_client` int(11) NOT NULL,
+DROP TABLE IF EXISTS `client`;
+CREATE TABLE IF NOT EXISTS `client` (
+  `id_client` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `rue` varchar(50) NOT NULL,
   `cp` varchar(6) NOT NULL,
   `Ville` varchar(50) NOT NULL,
-  `N°telephone` varchar(13) NOT NULL,
+  `Ntelephone` varchar(13) NOT NULL,
   `Mdp` varchar(50) NOT NULL,
-  `Admin` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Admine` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_client`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `client`
+--
+
+INSERT INTO `client` (`id_client`, `nom`, `prenom`, `email`, `rue`, `cp`, `Ville`, `Ntelephone`, `Mdp`, `Admine`) VALUES
+(1, 'Korchi', 'Djibril', 'd.korchi@lprs.fr', '60 avenue ambroise croizat', '95140', 'Garge-Lès-Gonnesse', '0781753918', 'azerty', 1);
 
 -- --------------------------------------------------------
 
@@ -46,11 +55,15 @@ CREATE TABLE `client` (
 -- Structure de la table `commentaire`
 --
 
-CREATE TABLE `commentaire` (
-  `id_commentaire` int(11) NOT NULL,
+DROP TABLE IF EXISTS `commentaire`;
+CREATE TABLE IF NOT EXISTS `commentaire` (
+  `id_commentaire` int(11) NOT NULL AUTO_INCREMENT,
   `commentaire` varchar(255) NOT NULL,
   `ref_film` int(11) NOT NULL,
-  `ref_client` int(11) NOT NULL
+  `ref_client` int(11) NOT NULL,
+  PRIMARY KEY (`id_commentaire`),
+  KEY `fk_commentaire_film` (`ref_film`),
+  KEY `fk_commentaire_client` (`ref_client`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -59,14 +72,15 @@ CREATE TABLE `commentaire` (
 -- Structure de la table `film`
 --
 
-CREATE TABLE `film` (
-  `id_film` int(11) NOT NULL,
+DROP TABLE IF EXISTS `film`;
+CREATE TABLE IF NOT EXISTS `film` (
+  `id_film` int(11) NOT NULL AUTO_INCREMENT,
   `Titre` varchar(100) NOT NULL,
-  `Numero film` varchar(50) NOT NULL,
   `Temps` varchar(50) NOT NULL,
   `Auteur` varchar(50) NOT NULL,
   `synopsie` varchar(255) NOT NULL,
-  `Affiche` varchar(50) NOT NULL
+  `Affiche` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_film`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -75,13 +89,17 @@ CREATE TABLE `film` (
 -- Structure de la table `reservation`
 --
 
-CREATE TABLE `reservation` (
-  `id_reservartion` int(11) NOT NULL,
+DROP TABLE IF EXISTS `reservation`;
+CREATE TABLE IF NOT EXISTS `reservation` (
+  `id_reservartion` int(11) NOT NULL AUTO_INCREMENT,
   `NbPlaceReserve` varchar(50) NOT NULL,
   `code_reduction` varchar(50) NOT NULL,
   `payment` varchar(50) NOT NULL,
   `ref_client` int(11) NOT NULL,
-  `ref_salle` int(11) NOT NULL
+  `ref_salle` int(11) NOT NULL,
+  PRIMARY KEY (`id_reservartion`),
+  KEY `fk_reservation_salle` (`ref_salle`),
+  KEY `fk_reservation_client` (`ref_client`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -90,86 +108,15 @@ CREATE TABLE `reservation` (
 -- Structure de la table `sallecinema`
 --
 
-CREATE TABLE `sallecinema` (
-  `id_salle` int(11) NOT NULL,
-  `N°Salle` varchar(50) NOT NULL,
+DROP TABLE IF EXISTS `sallecinema`;
+CREATE TABLE IF NOT EXISTS `sallecinema` (
+  `id_salle` int(11) NOT NULL AUTO_INCREMENT,
   `TypeSalle` varchar(50) NOT NULL,
   `NombrePlace` varchar(50) NOT NULL,
-  `ref_film` int(11) NOT NULL
+  `ref_film` int(11) NOT NULL,
+  PRIMARY KEY (`id_salle`),
+  KEY `fk_sallecinema_film` (`ref_film`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `client`
---
-ALTER TABLE `client`
-  ADD PRIMARY KEY (`id_client`);
-
---
--- Index pour la table `commentaire`
---
-ALTER TABLE `commentaire`
-  ADD PRIMARY KEY (`id_commentaire`),
-  ADD KEY `fk_commentaire_film` (`ref_film`),
-  ADD KEY `fk_commentaire_client` (`ref_client`);
-
---
--- Index pour la table `film`
---
-ALTER TABLE `film`
-  ADD PRIMARY KEY (`id_film`);
-
---
--- Index pour la table `reservation`
---
-ALTER TABLE `reservation`
-  ADD PRIMARY KEY (`id_reservartion`),
-  ADD KEY `fk_reservation_salle` (`ref_salle`),
-  ADD KEY `fk_reservation_client` (`ref_client`);
-
---
--- Index pour la table `sallecinema`
---
-ALTER TABLE `sallecinema`
-  ADD PRIMARY KEY (`id_salle`),
-  ADD KEY `fk_sallecinema_film` (`ref_film`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `client`
---
-ALTER TABLE `client`
-  MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `commentaire`
---
-ALTER TABLE `commentaire`
-  MODIFY `id_commentaire` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `film`
---
-ALTER TABLE `film`
-  MODIFY `id_film` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `reservation`
---
-ALTER TABLE `reservation`
-  MODIFY `id_reservartion` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `sallecinema`
---
-ALTER TABLE `sallecinema`
-  MODIFY `id_salle` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Contraintes pour les tables déchargées
