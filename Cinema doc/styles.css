@@ -1,10 +1,16 @@
 body {
+<<<<<<< HEAD:9872ed9fc22fc182d371c3e9ed316094_files/styles.css
+    background-color: #604b4b;
+}
+body {
+    background-color: #ce6666;
+=======
     background-color: #ff0000;
 }
 body {
     background-color: #ffffff;
+>>>>>>> 4f687166af8d3a542bf7871113be14d22a8f3dd1:Cinema doc/styles.css
 }
-
 .connexion {
     margin: 10px;
 }
