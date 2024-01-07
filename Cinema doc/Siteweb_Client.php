@@ -27,7 +27,7 @@
                 <div class="top_2 clearfix">
                     <div class="col-sm-3">
                         <div class="top_2_left">
-                            <h1><a href="https://www.templateonweb.com/upload/aedemodir/9872ed9fc22fc182d371c3e9ed316094/index.html">CINEMA ZONE <span>BOOKING</span></a></h1>
+                            <h1><a href="Siteweb_Client.php.php">CINEMA ZONE <span>BOOKING</span></a></h1>
                         </div>
                     </div>
                     <div class="col-sm-9">
@@ -52,14 +52,14 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="https://www.templateonweb.com/upload/aedemodir/9872ed9fc22fc182d371c3e9ed316094/#">CINEMA ZONE <span>BOOKING</span></a>
+                        <a class="navbar-brand" href="Siteweb_Client.php">CINEMA ZONE <span>BOOKING</span></a>
                     </div>
 
 
                     <div class="collapse navbar-collapse js-navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li><a class="font_tag active_tag" href="">Réserver</a></li>
-                            <li><a class="font_tag active_tag" href="">Rechercher</a></li>
+                            <li><a class="font_tag active_tag" href="Rechercher.html">Rechercher</a></li>
                             <li><a class="font_tag active_tag" href="SiteWeb.php">Déconnection</a></li>
                         </ul>
 
@@ -73,7 +73,7 @@
     <div class="container">
         <div class="row">
             <div class="booking clearfix">
-                <div class="col-sm-8">
+                <div class="col-sm-12">
                     <div class="booking_left_main clearfix">
                         <ul class="nav nav-tabs">
                             <li class="active"><a data-toggle="tab" href="https://www.templateonweb.com/upload/aedemodir/9872ed9fc22fc182d371c3e9ed316094/#home">TRENDING</a></li>

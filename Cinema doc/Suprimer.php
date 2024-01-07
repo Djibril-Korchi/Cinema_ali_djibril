@@ -72,66 +72,54 @@
     </div>
 </section>
 <?php
-try {
-    $bdd = new PDO('mysql:host=localhost;dbname=dki_cinema;charset=utf8', 'root', '');
-}
-catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
-$req = $bdd->prepare('SELECT * FROM client WHERE Admine = :a');
-$req->execute(array(
-        'a'=>false
-));
-$grade = $req->fetchAll();
+
+$bdd = new PDO('mysql:host=localhost;dbname=dki_cinema;charset=utf8', 'root', '');
+
+$salle = $bdd->query('SELECT * FROM sallecinema');
+
+$supSalle = $salle->fetchAll();
+$film = $bdd->query('SELECT * FROM film');
+
+$supFilm = $film->fetchAll();
+
 ?>
-<form action="admin.php" method="post">
-    <table width="100%">
-        <tr>
-            <td>
-                Sélectionné l'id du user que vous voulez faire
-            </td>
-            <td>
-                <select name="id">
+<table>
+    <tr>
+        <form method="post" action="Suprimer_salle.php">
+        <td> Suprimer une salle</td>
+             <td>
+
+                <select name="suprimer">
+                    <option name="titre" readonly>id  Type de salle  Nombre de Place</option>
                     <?php
-                    foreach ($grade as $element){
-                        echo"<br>
-<option name=".$element['id_client'].">".$element['id_client']."</option>";
+                    foreach ($supSalle as $element){
+                        echo  "<option name=".$element['id_salle'].">"."   ".$element['id_salle']."   ".$element['TypeSalle']."   ".$element['Nombre Place']."</option>";
                     }
-
                     ?>
-
                 </select>
             </td>
-            <td><input type='submit' value='Passer Admin'></td>
-        </tr>
-        <tr>
+            <td>
+                <input type="submit" value="Suprimer La salle">
+            </td>
+        </form>
+    </tr><tr>
+        <form method="post" action="Suprimer_Film.php">
+            <td> Suprimer un Film</td>
+            <td>
 
-            <th>nom</th>
-            <th>prenom</th>
-            <th>email</th>
-            <th>rue</th>
-            <th>Code Postal</th>
-            <th>Ville</th>
-            <th>Numéro de téléphone</th>
+                <select name="suprimer">
+                    <option name="titre" readonly>id   Titre   Auteur</option>
+                    <?php
+                    foreach ($supFilm as $element){
+                        echo  "<option name=".$element['id_film'].">"."  ".$element['id_film']."   ".$element['Titre']."   ".$element['Auteur']."</option>";
+                    }
+                    ?>
+                </select>
+            </td>
+            <td>
+                <input type="submit" value="Suprimer La salle">
+            </td>
+        </form>
+    </tr>
 
-        </tr>
-        <?php
-        foreach ($grade as $element){
-           echo "<tr>
-            <td>".$element['nom']."</td>
-            <td>".$element['prenom']."</td>
-            <td>".$element['email']."</td>
-            <td>".$element['rue']."</td>
-            <td>".$element['cp']."</td>
-            <td>".$element['Ville']."</td>
-            <td>".$element['Ntelephone']."</td>
-           
-            
-            </tr>";
-        }
-        ?>
-
-    </table>
-</form>
-</body>
-</html>
+</table>
