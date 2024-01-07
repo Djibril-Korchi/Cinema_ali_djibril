@@ -11,7 +11,18 @@ $req->execute(array(
     'Mdp' => $_POST['mdp']
 ));
 if ($req ->rowCount()>0){
-    header("Location:Siteweb.php.html");
+    $statue = $bdd->prepare("SELECT Admin FROM client(email,Mdp) WHERE (:mail,:mdp)");
+    $statue->execute(array(
+            'mail'=>$_POST['email'],
+        'mdp'=>$_POST['mdp']
+    ));
+    $Admin = $req->fetch();
+    if ($statue==true) {
+        header("Location:Siteweb.php");
+    }
+    else{
+        header("Location:Siteweb.php");
+    }
 } else{
     echo "Votre mot de passe est incorrect";
 }

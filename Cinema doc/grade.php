@@ -58,9 +58,9 @@
 
                     <div class="collapse navbar-collapse js-navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a class="font_tag active_tag" href="AjtFilm.html">Ajout de film</a></li>
-                            <li><a class="font_tag active_tag" href="Siteweb_Client.php">Déconnection</a></li>
-                            <li><a class="font_tag active_tag" href="formullairecreationsalle.php">Déconnection</a></li>
+                            <li><a class="font_tag active_tag" href="Connexion.html">Connexion</a></li>
+                            <li><a class="font_tag active_tag" href="Inscription.html">Inscription</a></li>
+
                         </ul>
 
                     </div><!-- /.nav-collapse -->
@@ -69,21 +69,48 @@
         </div>
     </div>
 </section>
-<form action="AjtFilm.php" method="post">
-    <br>
-    Titre du Film:<input type="text" id="Titre" name="Titre" required>
-    <br>
-Temps du Film:<input type="text" id="Temps" name="Temps" required>
-    <br>
-    Auteur du Film:<input type="text" id="Auteur" name="Auteur" required>
-    <br>
-
-    Synopsie du Film:<input type="text" id="synopsie" name="Synopsie" required>
-    <br>
-
-    Affiche du Film:<input type="text" name="Affiche"required>
-    <br>
-    <input type="submit" value="Crée">
-    <form/>
+<?php
+try {
+    $bdd = new PDO('mysql:host=localhost;dbname=dki_cinema;charset=utf8', 'root', '');
+}
+catch (Exception $e) {
+    die('Erreur : ' . $e->getMessage());
+}
+$req = $bdd->prepare('SELECT * FROM client WHERE Admine = :a');
+$req->execute(array(
+        'a'=>false
+));
+$grade = $req->fetchAll();
+?>
+<form action="admin.php" method="post">
+    <table width="100%">
+        <tr>
+            <th>ID</th>
+            <th>nom</th>
+            <th>prenom</th>
+            <th>email</th>
+            <th>rue</th>
+            <th>Code Postal</th>
+            <th>Ville</th>
+            <th>Numéro de téléphone</th>
+            <th>Mot de Passe</th>
+        </tr>
+        <?php
+        foreach ($grade as $element){
+           echo "<tr>
+            <td><input type='text' name=".$element['id_client']." value=" . $element['id_client'] . " readonly></td>
+            <td>".$element['nom']."</td>
+            <td>".$element['prenom']."</td>
+            <td>".$element['email']."</td>
+            <td>".$element['rue']."</td>
+            <td>".$element['cp']."</td>
+            <td>".$element['Ville']."</td>
+            <td>".$element['Ntelephone']."</td>
+            <td>".$element['Mdp']."</td>
+            </tr>";
+        }
+        ?>
+    </table>
+</form>
 </body>
 </html>

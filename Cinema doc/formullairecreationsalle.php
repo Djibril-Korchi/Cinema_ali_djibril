@@ -6,14 +6,14 @@
 </head>
 <body>
 <form action="CreationSalle.php" method="post">
-    <select>
+    Type de Salle:<select>
         <option name="Classique">Salle Classique</option>
         <option name="Prenium">Salle prenium</option>
         <option name="3d">Salle 3d</option>
         <option name="4d">sALLE 4d</option>
     </select>
     <br>
-    <input type="text" name="nombreplace">
+   Nombre de Place: <input type="text" name="nombreplace">
 <br>
         <?php try {
             $bdd = new PDO('mysql:host=localhost;dbname=dki_cinema;charset=utf8', 'root', '');
@@ -24,10 +24,10 @@
         $reponse = $bdd->query('SELECT * FROM film');
         $donne = $reponse->fetchAll();
         ?>
-    <select>
+    Film assossié:<select name="Film">
         <?php
         foreach ($donne as $element){
-            ?> <option><?= $element['Titre'] ?></option><?php
+            ?> <option name="Film"><?= $element['Titre'] ?></option><?php
         }
 
         ?>
