@@ -98,31 +98,33 @@
                                             foreach ($affiche as $element){
                                                 $URL=$element['Affiche'];
                                                 echo "</div>
+<form method='post' action='Reserver.php'>
                                         <div class='click_2 clearfix'>
                                             <div class='col-sm-3'>
                                                 <div class='click_2_inner clearfix'>
-                                                    <a href=''><img src=".$URL." width='100%' height='220px'></a>
-                                                    <p class='text-center'><a href=''>Salle Classique</a></p>
+                                                <input type='image' src=".$element['Affiche']." src='Reserver.php' width='100%' height='220px' name='film'>
+                                                    <p class='text-center'><a href='Reserver.php'>Salle Classique</a></p>
                                                 </div>
                                             </div>
                                             <div class='col-sm-3'>
                                                 <div class='click_2_inner clearfix'>
-                                                    <a href=''><img src=".$URL." width='100%' height='220px'></a>
-                                                    <p class='text-center'><a href=''>Salle Prenium</a></p>
+                                                    <a href='Reserver.php'><img src=".$URL." width='100%' height='220px'></a>
+                                                    <p class='text-center'><a href='Reserver.php'>Salle Prenium</a></p>
                                                 </div>
                                             </div>
                                             <div class='col-sm-3'>
                                                 <div class='click_2_inner clearfix'>
-                                                    <a href=''><img src=".$URL." width='100%' height='220px'></a>
-                                                    <p class='text-center'><a href=''>Salle 3D </a></p>
+                                                    <a href='Reserver.php'><img src=".$URL." width='100%' height='220px'></a>
+                                                    <p class='text-center'><a href='Reserver.php'>Salle 3D </a></p>
                                                 </div>
                                             </div>
                                             <div class='col-sm-3'>
                                                 <div class='click_2_inner clearfix'>
-                                                    <a href=''><img src=".$URL." width='100%' height='220px'></a>
-                                                    <p class='text-center'><a href=''>Salle 4D</a></p>
+                                                    <a href='Reserver.php'><img src=".$URL." width='100%' height='220px'></a>
+                                                    <p class='text-center'><a href='Reserver.php'>Salle 4D</a></p>
                                                 </div>
                                             </div>
+                                            </form>
                                         </div>";
 
                                             }
