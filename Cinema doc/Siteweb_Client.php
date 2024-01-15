@@ -58,7 +58,6 @@
 
                     <div class="collapse navbar-collapse js-navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a class="font_tag active_tag" href="">Réserver</a></li>
                             <li><a class="font_tag active_tag" href="Rechercher.html">Rechercher</a></li>
                             <li><a class="font_tag active_tag" href="SiteWeb.php">Déconnection</a></li>
                         </ul>
@@ -73,7 +72,7 @@
     <div class="container">
         <div class="row">
             <div class="booking clearfix">
-                <div class="col-sm-12">
+                <div class="col-sm-8">
                     <div class="booking_left_main clearfix">
                         <ul class="nav nav-tabs">
                             <li class="active"><a data-toggle="tab" href="https://www.templateonweb.com/upload/aedemodir/9872ed9fc22fc182d371c3e9ed316094/#home">TRENDING</a></li>

@@ -35,6 +35,7 @@ if ($req->rowCount() > 0) {
 }
 
 $res = $req->fetchAll();
+
+echo"<br>
+<a href='Connexion.html'><button>Connection</button></a>";
 ?>
-<br>
-<a href="Connection.html"><button>Connection</button></a>
