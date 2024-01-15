@@ -5,7 +5,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cinema Zone</title>
+    <title>Inscription</title>
     <link href="./bootstrap.min.css" rel="stylesheet">
     <link href="./global.css" rel="stylesheet">
     <link href="./index.css" rel="stylesheet">
@@ -27,7 +27,7 @@
                 <div class="top_2 clearfix">
                     <div class="col-sm-3">
                         <div class="top_2_left">
-                            <h1><a href="Siteweb_Client.php">CINEMA ZONE <span>BOOKING</span></a></h1>
+                            <h1><a href="Siteweb_Admin.php">CINEMA ZONE <span>BOOKING</span></a></h1>
                         </div>
                     </div>
                     <div class="col-sm-9">
@@ -52,15 +52,17 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="https://www.templateonweb.com/upload/aedemodir/9872ed9fc22fc182d371c3e9ed316094/#">CINEMA ZONE <span>BOOKING</span></a>
+                        <a class="navbar-brand" href="Siteweb_Admin.php">CINEMA ZONE <span>BOOKING</span></a>
                     </div>
 
 
                     <div class="collapse navbar-collapse js-navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a class="font_tag active_tag" href="Connexion.html">Connexion</a></li>
-                            <li><a class="font_tag active_tag" href="Inscription.html">Inscription</a></li>
-
+                            <li><a class="font_tag active_tag" href="Suprimer.php">Suprimer</a></li>
+                            <li><a class="font_tag active_tag" href="formullairecreationsalle.php">Création de salle</a></li>
+                            <li><a class="font_tag active_tag" href="AjtFilm.html">Nouveau Film</a></li>
+                            <li><a class="font_tag active_tag" href="grade.php">Ajouter de nouveau Admin</a></li>
+                            <li><a class="font_tag active_tag" href="SiteWeb.php">Déconnection</a></li>
                         </ul>
 
                     </div><!-- /.nav-collapse -->
@@ -69,6 +71,7 @@
         </div>
     </div>
 </section>
+
 <?php
 try {
     $bdd = new PDO('mysql:host=localhost;dbname=dki_cinema;charset=utf8', 'root', '');
@@ -85,7 +88,25 @@ $grade = $req->fetchAll();
 <form action="admin.php" method="post">
     <table width="100%">
         <tr>
-            <th>ID</th>
+            <td>
+                Sélectionné l'id du user que vous voulez faire
+            </td>
+            <td>
+                <select name="id">
+                    <?php
+                    foreach ($grade as $element){
+                        echo"<br>
+<option name=".$element['id_client'].">".$element['id_client']."</option>";
+                    }
+
+                    ?>
+
+                </select>
+            </td>
+            <td><input type='submit' value='Passer Admin'></td>
+        </tr>
+        <tr>
+
             <th>nom</th>
             <th>prenom</th>
             <th>email</th>
@@ -93,12 +114,11 @@ $grade = $req->fetchAll();
             <th>Code Postal</th>
             <th>Ville</th>
             <th>Numéro de téléphone</th>
-            <th>Mot de Passe</th>
+
         </tr>
         <?php
         foreach ($grade as $element){
            echo "<tr>
-            <td><input type='text' name=".$element['id_client']." value=" . $element['id_client'] . " readonly></td>
             <td>".$element['nom']."</td>
             <td>".$element['prenom']."</td>
             <td>".$element['email']."</td>
@@ -106,10 +126,12 @@ $grade = $req->fetchAll();
             <td>".$element['cp']."</td>
             <td>".$element['Ville']."</td>
             <td>".$element['Ntelephone']."</td>
-            <td>".$element['Mdp']."</td>
+           
+            
             </tr>";
         }
         ?>
+
     </table>
 </form>
 </body>

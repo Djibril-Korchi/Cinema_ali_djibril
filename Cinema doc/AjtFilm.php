@@ -16,3 +16,4 @@ $req->execute(array(
     'synopsie'=>$_POST['Synopsie'],
     'Affiche'=>$_POST['Affiche']
 ));
+header("Location: AjtFilm.html");

@@ -71,35 +71,55 @@
         </div>
     </div>
 </section>
-<form action="CreationSalle.php" method="post">
-    Type de Salle:<select>
-        <option name="Classique">Salle Classique</option>
-        <option name="Prenium">Salle prenium</option>
-        <option name="3d">Salle 3d</option>
-        <option name="4d">sALLE 4d</option>
-    </select>
-    <br>
-   Nombre de Place: <input type="text" name="nombreplace">
-<br>
-        <?php try {
-            $bdd = new PDO('mysql:host=localhost;dbname=dki_cinema;charset=utf8', 'root', '');
-        }
-        catch (Exception $e) {
-            die('Erreur : ' . $e->getMessage());
-        }
-        $reponse = $bdd->query('SELECT * FROM film');
-        $donne = $reponse->fetchAll();
-        ?>
-    Film assossié:<select name="Film">
-        <?php
-        foreach ($donne as $element){
-            ?> <option name="Film"><?= $element['Titre'] ?></option><?php
-        }
+<?php
 
-        ?>
-    </select>
-    <br>
-    <input type="submit" value="Création de salle">
-</form>
-</body>
-</html>
+$bdd = new PDO('mysql:host=localhost;dbname=dki_cinema;charset=utf8', 'root', '');
+
+$salle = $bdd->query('SELECT * FROM sallecinema');
+
+$supSalle = $salle->fetchAll();
+$film = $bdd->query('SELECT * FROM film');
+
+$supFilm = $film->fetchAll();
+
+?>
+<table>
+    <tr>
+        <form method="post" action="Suprimer_salle.php">
+        <td> Suprimer une salle</td>
+             <td>
+
+                <select name="suprimer">
+                    <option name="titre" readonly>id  Type de salle  Nombre de Place</option>
+                    <?php
+                    foreach ($supSalle as $element){
+                        echo  "<option name=".$element['id_salle'].">"."   ".$element['id_salle']."   ".$element['TypeSalle']."   ".$element['Nombre Place']."</option>";
+                    }
+                    ?>
+                </select>
+            </td>
+            <td>
+                <input type="submit" value="Suprimer La salle">
+            </td>
+        </form>
+    </tr><tr>
+        <form method="post" action="Suprimer_Film.php">
+            <td> Suprimer un Film</td>
+            <td>
+
+                <select name="suprimer">
+                    <option name="titre" readonly>id   Titre   Auteur</option>
+                    <?php
+                    foreach ($supFilm as $element){
+                        echo  "<option name=".$element['id_film'].">"."  ".$element['id_film']."   ".$element['Titre']."   ".$element['Auteur']."</option>";
+                    }
+                    ?>
+                </select>
+            </td>
+            <td>
+                <input type="submit" value="Suprimer La salle">
+            </td>
+        </form>
+    </tr>
+
+</table>
