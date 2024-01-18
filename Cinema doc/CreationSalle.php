@@ -1,24 +1,14 @@
 <?php
-try
-
-{
-
-    $bdd = new PDO('mysql:host=localhost;dbname=dki_cinema;charset=utf8', 'root', '');
-
-}
-
-catch (Exception $e)
-
-{
-
-    die('Erreur : ' . $e->getMessage());
-
-}
-$film=$_POST['Film'];
-echo $film;
-$req = $bdd->prepare('SELECT * FROM film WHERE Titre=?');
-$req->execute(array(
-    'Titre'=>$film
+$bdd = new PDO('mysql:host=localhost;dbname=dki_cinema;charset=utf8', 'root', '');
+$recherche= $bdd->prepare("SELECT id_film FROM film WHERE Titre=:t");
+$recherche->execute(array(
+    't'=>$_POST['Film']
 ));
-$initialisationID= $req->fetchAll();
-echo $initialisationID['id_salle'];
+$rech=$recherche->fetch();
+$req = $bdd->prepare('INSERT INTO sallecinema(TypeSalle,NombrePlace,ref_film )VALUES (:t,:n,:r)');
+$req->execute(array(
+    't'=>$_POST['type'],
+    'n'=>$_POST['nombreplace'],
+    'r'=>$rech['id_film']
+));
+header("Location: formullairecreationsalle.php");

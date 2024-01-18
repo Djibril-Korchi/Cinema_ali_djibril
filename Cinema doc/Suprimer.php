@@ -96,7 +96,7 @@ $supclient = $client->fetchAll();
                     <option name="titre" readonly>id  Type de salle  Nombre de Place</option>
                     <?php
                     foreach ($supSalle as $element){
-                        echo  "<option name=".$element['id_salle'].">"."   ".$element['id_salle']."   ".$element['TypeSalle']."   ".$element['Nombre Place']."</option>";
+                        echo  "<option name=".$element['id_salle'].">"."   ".$element['id_salle']."   ".$element['TypeSalle']."   ".$element['NombrePlace']."</option>";
                     }
                     ?>
                 </select>
