@@ -76,8 +76,8 @@
                 <div class="col-sm-8">
                     <div class="booking_left_main clearfix">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="https://www.templateonweb.com/upload/aedemodir/9872ed9fc22fc182d371c3e9ed316094/#home">TRENDING</a></li>
-                            <li><a data-toggle="tab" href="https://www.templateonweb.com/upload/aedemodir/9872ed9fc22fc182d371c3e9ed316094/#menu1">POPULAR</a></li>
+                            <li class="active"><a data-toggle="tab" href="https://www.templateonweb.com/upload/aedemodir/9872ed9fc22fc182d371c3e9ed316094/#home">Tendance</a></li>
+                            <li><a data-toggle="tab" href="https://www.templateonweb.com/upload/aedemodir/9872ed9fc22fc182d371c3e9ed316094/#menu1">Populaire</a></li>
 
 
                             <div class="tab-content clearfix">
