@@ -71,6 +71,7 @@
         </div>
     </div>
 </section>
+
 <?php
 try {
     $bdd = new PDO('mysql:host=localhost;dbname=dki_cinema;charset=utf8', 'root', '');

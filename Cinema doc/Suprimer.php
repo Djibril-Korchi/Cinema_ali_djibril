@@ -81,6 +81,9 @@ $supSalle = $salle->fetchAll();
 $film = $bdd->query('SELECT * FROM film');
 
 $supFilm = $film->fetchAll();
+$client = $bdd->query('SELECT * FROM client');
+
+$supclient = $client->fetchAll();
 
 ?>
 <table>
@@ -93,7 +96,7 @@ $supFilm = $film->fetchAll();
                     <option name="titre" readonly>id  Type de salle  Nombre de Place</option>
                     <?php
                     foreach ($supSalle as $element){
-                        echo  "<option name=".$element['id_salle'].">"."   ".$element['id_salle']."   ".$element['TypeSalle']."   ".$element['Nombre Place']."</option>";
+                        echo  "<option name=".$element['id_salle'].">"."   ".$element['id_salle']."   ".$element['TypeSalle']."   ".$element['NombrePlace']."</option>";
                     }
                     ?>
                 </select>
@@ -112,6 +115,25 @@ $supFilm = $film->fetchAll();
                     <?php
                     foreach ($supFilm as $element){
                         echo  "<option name=".$element['id_film'].">"."  ".$element['id_film']."   ".$element['Titre']."   ".$element['Auteur']."</option>";
+                    }
+                    ?>
+                </select>
+            </td>
+            <td>
+                <input type="submit" value="Suprimer La salle">
+            </td>
+        </form>
+    </tr>
+    <tr>
+        <form method="post" action="Suprimer_client.php">
+            <td> Suprimer un Film</td>
+            <td>
+
+                <select name="suprimer">
+                    <option name="titre" readonly>id   nom   prenom    email</option>
+                    <?php
+                    foreach ($supclient as $element){
+                        echo  "<option name=".$element['id_client'].">"."  ".$element['id_client']."   ".$element['nom']."   ".$element['prenom']."   ".$element['email']."</option>";
                     }
                     ?>
                 </select>
