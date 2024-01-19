@@ -73,5 +73,30 @@
 </section>
 <?php
 $bdd = new PDO('mysql:host=localhost;dbname=dki_cinema;charset=utf8', 'root', '');
-$reserve=$bdd->prepare("SELECT * FROM film WHERE Affiche = :A");
-echo $_POST['film'];
+$salle = $bdd->query('SELECT * FROM sallecinema');
+
+$supSalle = $salle->fetchAll();
+?>
+<table>
+    <tr>
+        <form method="post" action="Suprimer_salle.php">
+            <td> Suprimer une salle</td>
+            <td>
+
+                <select name="suprimer">
+                    <option name="titre" readonly>id  Type de salle  Nombre de Place</option>
+                    <?php
+                    foreach ($supSalle as $element){
+                        echo  "<option name=".$element['id_salle'].">"."   ".$element['id_salle']."   ".$element['TypeSalle']."   ".$element['Nombre Place']."</option>";
+                    }
+                    ?>
+                </select>
+            </td>
+            <td>
+                <input type="submit" value="Suprimer La salle">
+            </td>
+        </form>
+    </tr>
+</table>
+</body>
+</html>

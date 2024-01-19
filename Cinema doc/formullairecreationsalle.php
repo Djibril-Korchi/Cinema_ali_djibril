@@ -72,7 +72,7 @@
     </div>
 </section>
 <form action="CreationSalle.php" method="post">
-    Type de Salle:<select>
+    Type de Salle:<select name="type">
         <option name="Classique">Salle Classique</option>
         <option name="Prenium">Salle prenium</option>
         <option name="3d">Salle 3d</option>
