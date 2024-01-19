@@ -58,11 +58,11 @@
 
                     <div class="collapse navbar-collapse js-navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a class="font_tag active_tag" href="Suprimer.php">Suprimer</a></li>
+                            <li><a class="font_tag active_tag" href="Suprimer.php">Supprimer</a></li>
                             <li><a class="font_tag active_tag" href="formullairecreationsalle.php">Création de salle</a></li>
                             <li><a class="font_tag active_tag" href="AjtFilm.html">Nouveau Film</a></li>
                             <li><a class="font_tag active_tag" href="grade.php">Ajouter de nouveau Admin</a></li>
-                            <li><a class="font_tag active_tag" href="SiteWeb.php">Déconnection</a></li>
+                            <li><a class="font_tag active_tag" href="SiteWeb.php">Déconnexion</a></li>
                         </ul>
 
                     </div><!-- /.nav-collapse -->

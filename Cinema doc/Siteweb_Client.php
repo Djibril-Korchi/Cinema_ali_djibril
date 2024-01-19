@@ -59,7 +59,7 @@
                     <div class="collapse navbar-collapse js-navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li><a class="font_tag active_tag" href="Rechercher.html">Rechercher</a></li>
-                            <li><a class="font_tag active_tag" href="SiteWeb.php">Déconnection</a></li>
+                            <li><a class="font_tag active_tag" href="SiteWeb.php">Déconnexion</a></li>
                         </ul>
 
                     </div><!-- /.nav-collapse -->
