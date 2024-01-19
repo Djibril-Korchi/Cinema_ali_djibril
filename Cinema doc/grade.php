@@ -137,7 +137,7 @@ $grade = $req->fetchAll();
             <td>".$element['cp']."</td>
             <td>".$element['Ville']."</td>
             <td>".$element['Ntelephone']."</td>";
-               if($element['Admin']==true){
+               if($element['Admine']==true){
                    $admin="Oui";
                }else{
                    $admin="NON";
