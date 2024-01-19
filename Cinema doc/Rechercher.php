@@ -1,4 +1,4 @@
-<?php
+    <?php
 $bdd = new PDO('mysql:host=localhost;dbname=dki_cinema;charset=utf8', 'root', '');
 $rechercher=$bdd->prepare("SELECT * FROM film WHERE Titre LIKE :t");
 $rechercher->execute(array(

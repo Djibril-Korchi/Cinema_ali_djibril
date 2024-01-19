@@ -13,7 +13,6 @@
     <link href="./css" rel="stylesheet">
     <link href="./css(1)" rel="stylesheet">
     <script src="./jquery-2.1.1.min.js.téléchargement"></script>
-    <script src="./bootstrap.min.js.téléchargement"></script>
 </head>
 
 <body>

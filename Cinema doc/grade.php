@@ -78,6 +78,10 @@ try {
 catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
+$res = $bdd->query('SELECT * FROM client');
+
+$donne = $res->fetchAll();
+
 $req = $bdd->prepare('SELECT * FROM client WHERE Admine = :a');
 $req->execute(array(
         'a'=>false
@@ -85,6 +89,7 @@ $req->execute(array(
 $grade = $req->fetchAll();
 ?>
 <form action="admin.php" method="post">
+
     <table width="100%">
         <tr>
             <td>
@@ -113,21 +118,30 @@ $grade = $req->fetchAll();
             <th>Code Postal</th>
             <th>Ville</th>
             <th>Numéro de téléphone</th>
-
+            <th>Admin</th>
         </tr>
         <?php
-        foreach ($grade as $element){
-           echo "<tr>
+        foreach ($donne as $element){
+           ?>
+        <tr>
+            <?php
+           echo "
             <td>".$element['nom']."</td>
             <td>".$element['prenom']."</td>
             <td>".$element['email']."</td>
             <td>".$element['rue']."</td>
             <td>".$element['cp']."</td>
             <td>".$element['Ville']."</td>
-            <td>".$element['Ntelephone']."</td>
-           
-            
-            </tr>";
+            <td>".$element['Ntelephone']."</td>";
+               if($element['Admin']==true){
+                   $admin="Oui";
+               }else{
+                   $admin="NON";
+               }
+        ?>
+        <td><?= $admin ?></td>
+        </tr>
+    <?php
         }
         ?>
 

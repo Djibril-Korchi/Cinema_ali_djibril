@@ -1,10 +1,5 @@
 <?php
-try {
-    $bdd = new PDO('mysql:host=localhost;dbname=dki_cinema;charset=utf8', 'root', '');
-} catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
-
+$bdd = new PDO('mysql:host=localhost;dbname=dki_cinema;charset=utf8', 'root', '');
 $res = $bdd->prepare('SELECT * FROM client WHERE email=:email AND Mdp=:Mdp');
 $res->execute(array(
     'email' => $_POST['email'],
