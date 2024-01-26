@@ -13,6 +13,7 @@
     <link href="./css" rel="stylesheet">
     <link href="./css(1)" rel="stylesheet">
     <script src="./jquery-2.1.1.min.js.téléchargement"></script>
+<<<<<<< HEAD
     <script src="./bootstrap.min.js.téléchargement"></script>
     <style>
 
@@ -23,6 +24,8 @@
             outline: none;
         }
     </style>
+=======
+>>>>>>> f552fa89743beac70d3d94b21c2b760a18e27853
 </head>
 
 <body>
@@ -68,7 +71,7 @@
                     <div class="collapse navbar-collapse js-navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li><a class="font_tag active_tag" href="Rechercher.html">Rechercher</a></li>
-                            <li><a class="font_tag active_tag" href="SiteWeb.php">Déconnection</a></li>
+                            <li><a class="font_tag active_tag" href="SiteWeb.php">Déconnexion</a></li>
                         </ul>
 
                     </div><!-- /.nav-collapse -->

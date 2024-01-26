@@ -13,6 +13,8 @@
     <link href="./css" rel="stylesheet">
     <link href="./css(1)" rel="stylesheet">
     <script src="./jquery-2.1.1.min.js.téléchargement"></script>
+    <link href="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></link>
+    <link href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css"></link>
     <script src="./bootstrap.min.js.téléchargement"></script>
 </head>
 
@@ -58,11 +60,12 @@
 
                     <div class="collapse navbar-collapse js-navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a class="font_tag active_tag" href="Suprimer.php">Suprimer</a></li>
+                            <li><a class="font_tag active_tag" href="Modifier.php">Modifier</a></li>
+                            <li><a class="font_tag active_tag" href="Suprimer.php">Supprimer</a></li>
                             <li><a class="font_tag active_tag" href="formullairecreationsalle.php">Création de salle</a></li>
                             <li><a class="font_tag active_tag" href="AjtFilm.html">Nouveau Film</a></li>
                             <li><a class="font_tag active_tag" href="grade.php">Ajouter de nouveau Admin</a></li>
-                            <li><a class="font_tag active_tag" href="SiteWeb.php">Déconnection</a></li>
+                            <li><a class="font_tag active_tag" href="SiteWeb.php">Déconnexion</a></li>
                         </ul>
 
                     </div><!-- /.nav-collapse -->
@@ -79,6 +82,10 @@ try {
 catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
+$res = $bdd->query('SELECT * FROM client');
+
+$donne = $res->fetchAll();
+
 $req = $bdd->prepare('SELECT * FROM client WHERE Admine = :a');
 $req->execute(array(
         'a'=>false
@@ -86,6 +93,7 @@ $req->execute(array(
 $grade = $req->fetchAll();
 ?>
 <form action="admin.php" method="post">
+
     <table width="100%">
         <tr>
             <td>
@@ -114,21 +122,30 @@ $grade = $req->fetchAll();
             <th>Code Postal</th>
             <th>Ville</th>
             <th>Numéro de téléphone</th>
-
+            <th>Admin</th>
         </tr>
         <?php
-        foreach ($grade as $element){
-           echo "<tr>
+        foreach ($donne as $element){
+           ?>
+        <tr>
+            <?php
+           echo "
             <td>".$element['nom']."</td>
             <td>".$element['prenom']."</td>
             <td>".$element['email']."</td>
             <td>".$element['rue']."</td>
             <td>".$element['cp']."</td>
             <td>".$element['Ville']."</td>
-            <td>".$element['Ntelephone']."</td>
-           
-            
-            </tr>";
+            <td>".$element['Ntelephone']."</td>";
+               if($element['Admine']==true){
+                   $admin="Oui";
+               }else{
+                   $admin="NON";
+               }
+        ?>
+        <td><?= $admin ?></td>
+        </tr>
+    <?php
         }
         ?>
 

@@ -1,12 +1,12 @@
 <?php
 try {
     $bdd = new PDO('mysql:host=localhost;dbname=dki_cinema;charset=utf8', 'root', '');
-<<<<<<< HEAD
+
 }
 catch (Exception $e) {
-=======
+
 } catch (Exception $e) {
->>>>>>> eba3356196ff60580c1b94f8bb0708f0f299f89d
+
     die('Erreur : ' . $e->getMessage());
 }
 
