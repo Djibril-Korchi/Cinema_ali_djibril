@@ -5,10 +5,13 @@ $recherche->execute(array(
     't'=>$_POST['Film']
 ));
 $rech=$recherche->fetch();
-$req = $bdd->prepare('INSERT INTO sallecinema(TypeSalle,NombrePlace,ref_film )VALUES (:t,:n,:r)');
+$req = $bdd->prepare('INSERT INTO sallecinema(TypeSalle,NombrePlace,ref_film,prix,code_reduction)VALUES (:t,:n,:r,:p,:c)');
 $req->execute(array(
     't'=>$_POST['type'],
     'n'=>$_POST['nombreplace'],
-    'r'=>$rech['id_film']
+    'r'=>$rech['id_film'],
+    'p'=>$_POST['prix'],
+    'c'=>$_POST['code']
 ));
+
 header("Location: formullairecreationsalle.php");

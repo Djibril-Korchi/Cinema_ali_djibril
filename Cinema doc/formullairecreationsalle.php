@@ -72,15 +72,22 @@
     </div>
 </section>
 <form action="CreationSalle.php" method="post">
-    Type de Salle:<select name="type">
-        <option name="Classique">Salle Classique</option>
-        <option name="Prenium">Salle prenium</option>
-        <option name="3d">Salle 3d</option>
-        <option name="4d">sALLE 4d</option>
-    </select>
-    <br>
-   Nombre de Place: <input type="text" name="nombreplace">
-<br>
+    <table>
+        <tr>
+
+    <td>Type de Salle:</td>
+            <td><select name="type">
+                    <option name="Classique">Salle Classique</option>
+                    <option name="Prenium">Salle prenium</option>
+                    <option name="3d">Salle 3d</option>
+                    <option name="4d">sALLE 4d</option>
+                </select></td>
+        </tr>
+        <tr>
+            <td>Nombre de Place:</td>
+            <td><input type="text" name="nombreplace"></td>
+        </tr>
+
         <?php try {
             $bdd = new PDO('mysql:host=localhost;dbname=dki_cinema;charset=utf8', 'root', '');
         }
@@ -90,7 +97,9 @@
         $reponse = $bdd->query('SELECT * FROM film');
         $donne = $reponse->fetchAll();
         ?>
-    Film assossié:<select name="Film">
+    <tr>
+        <td>Film assossié:</td>
+        <td><select name="Film">
         <?php
         foreach ($donne as $element){
             ?> <option name="Film"><?= $element['Titre'] ?></option><?php
@@ -98,8 +107,21 @@
 
         ?>
     </select>
-    <br>
-    <input type="submit" value="Création de salle">
+        </td>
+    </tr>
+    <tr>
+        <td>Prix d'entrer:</td>
+      <td> <input type="text" name="prix"></td>
+    </tr>
+        <tr>
+            <td>Code de réduction pour ce film:</td>
+           <td> <input type="text" name="code"></td>
+        </tr>
+        <tr>
+    <td><input type="submit" value="Création de salle"></td>
+            <td><input type="reset" value="Reset"></td>
+        </tr>
+    </table>
 </form>
 </body>
 </html>

@@ -73,7 +73,7 @@
     <div class="container">
         <div class="row">
             <div class="booking clearfix">
-                <div class="col-sm-8">
+                <div class="col-sm-10">
                     <div class="booking_left_main clearfix">
                         <ul class="nav nav-tabs">
                             <li class="active"><a data-toggle="tab" href="https://www.templateonweb.com/upload/aedemodir/9872ed9fc22fc182d371c3e9ed316094/#home">TRENDING</a></li>
@@ -94,40 +94,46 @@
                                             $affichage = $bdd->query('SELECT Affiche,Titre FROM film');
                                             $affiche = $affichage->fetchAll();
                                             foreach ($affiche as $element){
+                                                $URL=$element['Affiche'];
                                                 echo "</div>
+                                        <form method='post' action='Reserver.php'>
                                         <div class='click_2 clearfix'>
                                             <div class='col-sm-3'>
                                                 <div class='click_2_inner clearfix'>
-                                                    <a href=''><img src=".$element['Affiche']." width='100%' height='220px'></a>
-                                                    <p class='text-center'><a href=''>Salle Classique</a></p>
+                                                <input type='image' src=".$element['Affiche']." src='Reserver.php' width='100%' height='220px' name='film'>
+                                                    <p class='text-center'><input value='". $element['Titre']."' class='text-input' type='text'></p>                                         
+                                                    <p class='text-center'>Salle Classique</p>                                                  
                                                 </div>
                                             </div>
                                             <div class='col-sm-3'>
                                                 <div class='click_2_inner clearfix'>
-                                                    <a href=''><img src=".$element['Affiche']." width='100%' height='220px'></a>
-                                                    <p class='text-center'><a href=''>Salle Prenium</a></p>
+                                                    <input type='image' src=".$element['Affiche']." src='Reserver.php' width='100%' height='220px' name='film'>
+                                                    <p class='text-center'><input value='". $element['Titre']."' class='text-input' type='text'></p>                                         
+                                                    <p class='text-center'>Salle Prenium</p>
                                                 </div>
                                             </div>
                                             <div class='col-sm-3'>
                                                 <div class='click_2_inner clearfix'>
-                                                    <a href=''><img src=".$element['Affiche']." width='100%' height='220px'></a>
-                                                    <p class='text-center'><a href=''>Salle 3D </a></p>
+                                                    <input type='image' src=".$element['Affiche']." src='Reserver.php' width='100%' height='220px' name='film'>
+                                                    <p class='text-center'><input value='". $element['Titre']."' class='text-input' type='text'></p>                                         
+                                                    <p class='text-center'>Salle 3D</p>
                                                 </div>
                                             </div>
                                             <div class='col-sm-3'>
-                                                <div class='click_2_inner clearfix'>
-                                                    <a href=''><img src=".$element['Affiche']." width='100%' height='220px'></a>
-                                                    <p class='text-center'><a href=''>Salle 4D</a></p>
+                                                <div class='click_2_inner clearfix'>                                                <div class='click_2_inner clearfix'>
+                                                    <input type='image' src=".$element['Affiche']." src='Reserver.php' width='100%' height='220px' name='film'>
+                                                    <p class='text-center'><input value='". $element['Titre']."' class='text-input' type='text'></p>                                         
+                                                    <p class='text-center'>Salle 4D</p>
                                                 </div>
                                             </div>
+                                            </form>
                                         </div>";
 
-}
-?>
-            </div>
-        </div>
-    </div>
-</section>
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div>
 <section id="footer_bottom">
     <div class="container">
         <div class="row">
